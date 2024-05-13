@@ -7,6 +7,12 @@ class SearchBar extends Component {
         this.state = {
             searchTerm: ''
         }
+
+        this.inputRef = React.createRef()
+    }
+
+    componentDidMount() {
+        this.inputRef.current.focus()
     }
 
     onInputChange(term) {
@@ -22,7 +28,8 @@ class SearchBar extends Component {
                     placeholder="Search..."
                     className='justify-content-center w-75 mx-auto rounded p-3'
                     value={this.state.searchTerm}
-                    onChange={(event) => this.onInputChange(event.target.value)} />
+                    onChange={(event) => this.onInputChange(event.target.value)}
+                    ref={this.inputRef} />
             </div>
         )
     }
